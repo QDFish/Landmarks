@@ -12,6 +12,7 @@ import CoreLocation
 @Observable
 class ModelData {
     var landmarks: [Landmark] = load("landmarkData.json")
+    var hikes: [Hike] = load("hikeData.json")
 }
 
 struct Landmark: Hashable, Codable, Identifiable {
