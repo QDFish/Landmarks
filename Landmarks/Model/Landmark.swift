@@ -13,6 +13,7 @@ import CoreLocation
 class ModelData {
     var landmarks: [Landmark] = load("landmarkData.json")
     var hikes: [Hike] = load("hikeData.json")
+    var profile = Profile.default
     
     var categories: [String: [Landmark]] {
         Dictionary(
@@ -46,6 +47,10 @@ struct Landmark: Hashable, Codable, Identifiable {
     private var imageName: String
     var image: Image {
         Image(imageName)
+    }
+    
+    var featureImage: Image? {
+        isFeatured ? Image(imageName + "_feature") : nil
     }
     
     private var coordinates: Coordinates
