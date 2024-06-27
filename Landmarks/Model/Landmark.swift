@@ -20,6 +20,10 @@ class ModelData {
             by: { $0.category.rawValue }
         )
     }
+    
+    var features: [Landmark] {
+        landmarks.filter { $0.isFeatured }
+    }
 }
 
 struct Landmark: Hashable, Codable, Identifiable {
@@ -29,7 +33,8 @@ struct Landmark: Hashable, Codable, Identifiable {
     var state: String
     var description: String
     var isFavorite: Bool
-    
+    var isFeatured: Bool
+        
     var category: Category
     
     enum Category: String, CaseIterable, Codable {
